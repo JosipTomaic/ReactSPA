@@ -1,0 +1,24 @@
+.numberCircle {
+    width: 120px;
+    line-height: 120px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 32px;
+    border: 2px solid black;
+    background-color: #666;
+    color: white;
+}
+
+.backgroundColor{
+    background-color: grey;
+}
+
+.centeredCircle{
+    margin:auto;
+    position: relative;
+    display: table;
+}
+
+.centeredText{
+    text-align: center;
+}

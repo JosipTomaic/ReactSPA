@@ -1,0 +1,46 @@
+ul {
+    list-style-type: none;
+    display:inline-block;
+}
+  
+h4 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+li img {
+    float: left;
+    margin: 0 15px 0 0;
+    width: 100px;
+}
+
+li p {
+    font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+li {
+    padding: 10px;
+    overflow: auto;
+}
+
+li:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+.regularPrice {
+    color: grey;
+    float: left;
+    padding-left: 20%;
+    text-align: center;
+}
+
+.discountPrice {
+    float:right;
+    padding-right: 20%;
+    text-align: center;
+}
+
+.inlinePrices {
+    display: inline-block;
+    vertical-align: top;
+}
