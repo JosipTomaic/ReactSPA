@@ -1,6 +1,7 @@
 ul {
     list-style-type: none;
     display:inline-block;
+    padding-left: 0pt;
 }
   
 h4 {
@@ -10,7 +11,7 @@ h4 {
 li img {
     float: left;
     margin: 0 15px 0 0;
-    width: 100px;
+    width: 30%;
 }
 
 li p {
@@ -20,6 +21,7 @@ li p {
 li {
     padding: 10px;
     overflow: auto;
+    border-bottom: 1px solid black;
 }
 
 li:hover {
@@ -41,6 +43,9 @@ li:hover {
 }
 
 .inlinePrices {
-    display: inline-block;
-    vertical-align: top;
+    margin: 0 auto;
+}
+
+.backgroundColor{
+    background-color: rgba(245, 245, 245, 0.801);
 }

@@ -8,17 +8,21 @@ export default class Discounts extends React.Component {
         this.state = {
             discountsList: discountsList.map((item) =>
                 <li key={item.id}>
-                    <img src={item.image} />
+                    <div>
+                        <img src={item.image} />
+                    </div>
                     <h4>{item.name}</h4>
-                    <span className="regularPrice"><strike>{item.regularPrice}$</strike></span>
-                    <span className="discountPrice">{item.discountPrice}$</span>
+                    <div className="inlinePrices">
+                        <span className="regularPrice"><strike>{item.regularPrice} HRK</strike></span>
+                        <span className="discountPrice">{item.discountPrice} HRK</span>
+                    </div>
                 </li>
             )
         }
     }
 
     render() {
-        return (<ul>
+        return (<ul className="backgroundColor">
             {this.state.discountsList}
         </ul>);
     }
