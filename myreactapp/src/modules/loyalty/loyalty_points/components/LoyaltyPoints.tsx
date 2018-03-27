@@ -9,7 +9,10 @@ export class LoyaltyPoints extends React.Component<any, any> {
     componentWillMount() {
         this.pointsInitialState();
         var currentPoints = localStorage.getItem('points');
-        this.setState({ points: (JSON.parse(currentPoints ? currentPoints : '{}')).points });
+        this.setState({ 
+            points: (JSON.parse(currentPoints ? currentPoints : '{}')).points, 
+            initialState: (JSON.parse(currentPoints ? currentPoints : '{}')).initialState 
+        });
     }
 
     pointsInitialState() {
