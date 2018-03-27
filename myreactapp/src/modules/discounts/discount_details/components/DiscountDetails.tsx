@@ -8,8 +8,15 @@ const discountPrice = 'Now';
 
 export class DiscountDetails extends React.Component<any, any> {
 
-    updatePoints() {
-        localStorage.getItem('points');
+    redeemDiscount(discountPriceValue: number) {
+        var points = discountPriceValue * 0.5;
+        var pointsObject = localStorage.getItem('points');
+        var currentPoints = Number((JSON.parse(pointsObject ? pointsObject : '{}')).points) + points;
+        localStorage.setItem('points', JSON.stringify({
+            points: currentPoints, 
+            initialState: (JSON.parse(pointsObject ? pointsObject : '{}')).initialState 
+        }));
+        this.props.history.push('/');
     }
 
     render() {
@@ -27,7 +34,9 @@ export class DiscountDetails extends React.Component<any, any> {
                         </ListGroupItem>
                     </ListGroup>
                     <Panel.Body>
-                        <Button>Redeem discount</Button>
+                        <Button onClick={this.redeemDiscount.bind(this, discount.discountPrice)}>
+                            Redeem discount
+                        </Button>
                     </Panel.Body>
                 </Panel>
             );
