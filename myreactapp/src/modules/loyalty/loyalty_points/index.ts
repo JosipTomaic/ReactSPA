@@ -1,0 +1,1 @@
+export {LoyaltyPoints} from './components/LoyaltyPoints';

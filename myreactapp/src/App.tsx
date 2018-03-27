@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { Routing } from 'modules';
 import './App.css';
-import LoyaltyPoints from './loyalty/loyalty_points/LoyaltyPoints.jsx';
-import Discounts from './discounts/Discounts.jsx';
 
 const logo = require('./logo.svg');
+const title = 'Welcome to MusicPassion';
 
 class App extends React.Component {
   render() {
@@ -11,11 +11,9 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to MusicPassion</h1>
+          <h1 className="App-title">{title}</h1>
         </header>
-        <LoyaltyPoints />
-        <h2>Available discounts</h2>
-        <Discounts />
+        <Routing />
       </div>
     );
   }
