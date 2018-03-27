@@ -35,7 +35,6 @@ export const discountsList = [
 ];
 
 export function GetSpecificDiscount (id: number) {
-    // ne pronađe objekt u polju objekata ukoliko se koristi stroga provjera jednakosti (a to zahtijeva tslint)...
     var discount =  discountsList.find(x => x.id === id);
     return discount;
 }

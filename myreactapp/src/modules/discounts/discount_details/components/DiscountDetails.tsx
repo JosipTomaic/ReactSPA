@@ -13,7 +13,7 @@ export class DiscountDetails extends React.Component<any, any> {
     }
 
     render() {
-        const discount = GetSpecificDiscount(this.props.match.params.id);
+        const discount = GetSpecificDiscount(Number(this.props.match.params.id));
         if (discount) {
             return (
                 <Panel>
