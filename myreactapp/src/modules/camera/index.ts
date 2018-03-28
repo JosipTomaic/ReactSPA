@@ -1,1 +1,0 @@
-export { CameraPlugin } from './components/CameraPlugin';
