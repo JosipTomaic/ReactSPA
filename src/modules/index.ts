@@ -1,3 +1,5 @@
-export { Discounts } from './discounts';
-export { Routing } from './routing';
-export { LoyaltyPage } from './loyalty';
+export { DiscountItemDetails, DiscountItemList } from './Discounts';
+export { Routing } from './Routing';
+export { LoyaltyPage } from './Loyalty';
+export { QRCodeReader } from './QR';
+export { SocialSharing} from './Social';

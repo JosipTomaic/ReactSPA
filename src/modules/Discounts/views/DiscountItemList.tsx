@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { discountsList } from './DiscountsList';
+import { discountsList } from '../constants';
 import { Link } from 'react-router-dom';
-import '../Discounts.css';
+import '../views/DiscountItemList.css';
 
 const discountsText = 'Available discounts';
 
-export const Discounts = () => {
+export const DiscountItemList = () => {
     return (
         <div>
             <h2>{discountsText}</h2>

@@ -1,1 +1,0 @@
-export { DiscountDetails } from './components/DiscountDetails';

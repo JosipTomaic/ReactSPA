@@ -1,1 +1,1 @@
-export { Routing } from './components/Routing';
+export { Routing } from './Routing';

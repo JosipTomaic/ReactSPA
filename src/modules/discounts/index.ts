@@ -1,3 +1,2 @@
-export { Discounts } from './components/Discounts';
-export { discountsList, GetSpecificDiscount } from './components/DiscountsList';
-export { DiscountDetails } from './discount_details';
+export { discountsList, GetSpecificDiscount } from './constants';
+export { DiscountItemDetails, DiscountItemList } from './views';
