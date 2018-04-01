@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { GetSpecificDiscount } from '../../Discounts';
 import { QRCodeReader } from '../../QR';
 import { SocialSharing } from '../../Social';
+import { Page404 } from '../../Page404';
 import './DiscountItemDetails.css';
 
 const regularPrice = 'Then';
@@ -82,7 +83,7 @@ export class DiscountItemDetails extends React.Component<any, any> {
                 );
             }
         } else {
-            return (<h2>Error 404 - not found.</h2>);
+            return (<Page404 />);
         }
     }
 }

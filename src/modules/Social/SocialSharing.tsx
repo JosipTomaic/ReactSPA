@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { FacebookShareButton, FacebookIcon } from 'react-share';
-import { withRouter } from 'react-router-dom';
 
 export class SocialSharing extends React.Component<any, any> {
     constructor(props: any) {
@@ -41,5 +40,3 @@ export class SocialSharing extends React.Component<any, any> {
         );
     }
 }
-
-export default withRouter(SocialSharing);
