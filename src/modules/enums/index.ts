@@ -1,0 +1,1 @@
+export { globalEnum } from './globalEnum';
