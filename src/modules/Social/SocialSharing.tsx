@@ -2,10 +2,13 @@ import * as React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { FacebookShareButton, FacebookIcon } from 'react-share';
 
-export class SocialSharing extends React.Component<any, any> {
-    constructor(props: any) {
-        super(props);
-    }
+interface SocialSharingProps {
+    showModalState: boolean;
+    discountPrice: number;
+    closeModal();
+}
+
+export class SocialSharing extends React.Component<SocialSharingProps, {}> {
 
     redeemDiscount = (discountPriceValue: number) => {
         var points = discountPriceValue * 0.5;
@@ -15,7 +18,7 @@ export class SocialSharing extends React.Component<any, any> {
             points: currentPoints,
             initialState: (JSON.parse(pointsObject ? pointsObject : '{}')).initialState
         }));
-        this.props.history.push('/');
+        // this.props.history.push('/');
     }
 
     render() {

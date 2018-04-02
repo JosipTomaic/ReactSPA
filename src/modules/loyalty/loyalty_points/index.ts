@@ -1,1 +1,1 @@
-export {LoyaltyPoints} from './components/LoyaltyPoints';
+export { LoyaltyPoints } from './LoyaltyPoints';

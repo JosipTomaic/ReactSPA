@@ -1,1 +1,1 @@
-export { LoyaltyPage } from './components/LoyaltyPage';
+export { LoyaltyPage } from './LoyaltyPage';

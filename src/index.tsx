@@ -4,14 +4,14 @@ import registerServiceWorker from './registerServiceWorker';
 import { Routing } from 'modules';
 import './index.css';
 
-const logo = require('./logo.svg');
-const title = 'Welcome to MusicPassion';
+const LOGO = require('./logo.svg');
+const TITLE = 'Welcome to MusicPassion';
 
 ReactDOM.render(
   <div className="App">
     <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h1 className="App-title">{title}</h1>
+      <img src={LOGO} className="App-logo" alt="logo" />
+      <h1 className="App-title">{TITLE}</h1>
     </header>
     <Routing />
   </div>,

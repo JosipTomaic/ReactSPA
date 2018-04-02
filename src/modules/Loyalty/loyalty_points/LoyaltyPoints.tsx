@@ -1,8 +1,13 @@
 import * as React from 'react';
-import '../LoyaltyPoints.css';
+import './LoyaltyPoints.css';
 
-export class LoyaltyPoints extends React.Component<any, any> {
-    constructor(state: any) {
+interface LoyaltyPointsStates {
+    points: number;
+    initialState: boolean;
+}
+
+export class LoyaltyPoints extends React.Component<{}, LoyaltyPointsStates> {
+    constructor(state: LoyaltyPointsStates) {
         super(state); 
     }
 
@@ -17,7 +22,7 @@ export class LoyaltyPoints extends React.Component<any, any> {
 
     pointsInitialState() {
         if (!localStorage.getItem('points')) {
-            localStorage.setItem('points', JSON.stringify({ points: '0', initialState: true }));
+            localStorage.setItem('points', JSON.stringify({ points: 0, initialState: true }));
         }
     }
 

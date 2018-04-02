@@ -2,7 +2,18 @@ import * as React from 'react';
 import QrReader from 'react-qr-reader';
 import { Button } from 'react-bootstrap';
 
-export class QRCodeReader extends React.Component<any, any> {
+interface QRCodeReaderProps {
+    closeCamera();
+    showModal();
+}
+
+interface QRCodeReaderStates {
+    delay: number;
+    result: string;
+    cameraType: string;
+}
+
+export class QRCodeReader extends React.Component<QRCodeReaderProps, QRCodeReaderStates> {
     state = {
         delay: 300,
         result: 'No result',

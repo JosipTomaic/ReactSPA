@@ -7,14 +7,27 @@ import { SocialSharing } from '../../Social';
 import { Page404 } from '../../Page404';
 import './DiscountItemDetails.css';
 
-const regularPrice = 'Then';
-const discountPrice = 'Now';
+const REGULAR_PRICE = 'Then';
+const DISCOUNT_PRICE = 'Now';
 
-export class DiscountItemDetails extends React.Component<any, any> {
+interface DIDetailsProps {
+    match: {
+        params: {
+            id: string
+        }
+    };
+}
+
+interface DIDetailsStates {
+    showCamera: boolean;
+    showSharing: boolean;
+}
+
+export class DiscountItemDetails extends React.Component<DIDetailsProps, DIDetailsStates> {
 
     discount: any;
 
-    constructor(props: any) {
+    constructor(props: DIDetailsProps) {
         super(props);
         this.state = {
             showCamera: false,
@@ -53,9 +66,9 @@ export class DiscountItemDetails extends React.Component<any, any> {
                                 <img src={this.discount.image} />
                             </Panel.Body>
                             <ListGroup>
-                                <ListGroupItem>{regularPrice + ':' + this.discount.regularPrice + ' HRK'}</ListGroupItem>
+                                <ListGroupItem>{`${REGULAR_PRICE} : ${this.discount.regularPrice} HRK`}</ListGroupItem>
                                 <ListGroupItem className="discountPrice">
-                                    {discountPrice + ':' + this.discount.discountPrice + ' HRK'}
+                                    {`${DISCOUNT_PRICE} : ${this.discount.discountPrice} HRK`}
                                 </ListGroupItem>
                             </ListGroup>
                             <Panel.Body>
@@ -75,7 +88,6 @@ export class DiscountItemDetails extends React.Component<any, any> {
                         <QRCodeReader closeCamera={this.close} showModal={this.handleShow} />
                         <SocialSharing
                             closeModal={this.handleClose}
-                            showModal={this.handleShow}
                             showModalState={this.state.showSharing}
                             discountPrice={this.discount.discountPrice}
                         />

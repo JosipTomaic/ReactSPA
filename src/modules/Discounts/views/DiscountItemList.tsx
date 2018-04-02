@@ -3,12 +3,12 @@ import { discountsList } from '../constants';
 import { Link } from 'react-router-dom';
 import '../views/DiscountItemList.css';
 
-const discountsText = 'Available discounts';
+const DISCOUNTS_TEXT = 'Available discounts';
 
 export const DiscountItemList = () => {
     return (
         <div>
-            <h2>{discountsText}</h2>
+            <h2>{DISCOUNTS_TEXT}</h2>
             <ul>
                 {
                     discountsList.map((item) =>
