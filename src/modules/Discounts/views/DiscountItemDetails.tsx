@@ -6,9 +6,7 @@ import { QRCodeReader } from '../../QR';
 import { SocialSharing } from '../../Social';
 import { Page404 } from '../../Page404';
 import './DiscountItemDetails.css';
-
-const REGULAR_PRICE = 'Then';
-const DISCOUNT_PRICE = 'Now';
+import { priceState } from '../enums';
 
 interface DIDetailsProps {
     match: {
@@ -66,9 +64,9 @@ export class DiscountItemDetails extends React.Component<DIDetailsProps, DIDetai
                                 <img src={this.discount.image} />
                             </Panel.Body>
                             <ListGroup>
-                                <ListGroupItem>{`${REGULAR_PRICE} : ${this.discount.regularPrice} HRK`}</ListGroupItem>
+                                <ListGroupItem>{`${priceState.then} : ${this.discount.regularPrice} HRK`}</ListGroupItem>
                                 <ListGroupItem className="discountPrice">
-                                    {`${DISCOUNT_PRICE} : ${this.discount.discountPrice} HRK`}
+                                    {`${priceState.now} : ${this.discount.discountPrice} HRK`}
                                 </ListGroupItem>
                             </ListGroup>
                             <Panel.Body>

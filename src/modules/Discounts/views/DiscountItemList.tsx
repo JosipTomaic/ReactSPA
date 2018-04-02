@@ -2,13 +2,12 @@ import * as React from 'react';
 import { discountsList } from '../constants';
 import { Link } from 'react-router-dom';
 import '../views/DiscountItemList.css';
-
-const DISCOUNTS_TEXT = 'Available discounts';
+import { discountListText } from '../enums'
 
 export const DiscountItemList = () => {
     return (
         <div>
-            <h2>{DISCOUNTS_TEXT}</h2>
+            <h2>{discountListText.allAvailable}</h2>
             <ul>
                 {
                     discountsList.map((item) =>
