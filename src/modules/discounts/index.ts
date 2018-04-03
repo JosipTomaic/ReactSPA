@@ -1,2 +1,2 @@
-export { GetAllDiscounts, GetSpecificDiscount } from './constants';
+export { discountsList, GetSpecificDiscount } from './constants';
 export { DiscountItemDetails, DiscountItemList } from './views';

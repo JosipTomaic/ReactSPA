@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GetAllDiscounts } from '../constants';
+import { discountsList } from '../constants';
 import { Link } from 'react-router-dom';
 import '../views/DiscountItemList.css';
 import { discountListText } from '../enums'
@@ -10,7 +10,7 @@ export const DiscountItemList = () => {
             <h2>{discountListText.allAvailable}</h2>
             <ul>
                 {
-                    GetAllDiscounts().map((item) =>
+                    discountsList.map((item) =>
                         (
                             <li key={item.id}>
                                 <Link to={`/discount/${item.id}`}>
