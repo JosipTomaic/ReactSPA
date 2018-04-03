@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Panel, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { GetSpecificDiscount } from '../../Discounts';
 import { QRCodeReader } from '../../QR';
 import { SocialSharing } from '../../Social';
 import { Page404 } from '../../Page404';
 import './DiscountItemDetails.css';
 import { priceState } from '../enums';
+import { DiscountItem } from '../model';
 
 interface DIDetailsProps {
     match: {
@@ -14,6 +14,9 @@ interface DIDetailsProps {
             id: string
         }
     };
+    discountItemId: number;
+    discountItem: DiscountItem;
+    fetchDiscountItem: (id: number) => void;
 }
 
 interface DIDetailsStates {
@@ -34,7 +37,7 @@ export class DiscountItemDetails extends React.Component<DIDetailsProps, DIDetai
     }
 
     componentWillMount() {
-        this.discount = GetSpecificDiscount(parseInt(this.props.match.params.id, 10));
+        this.discount = this.props.fetchDiscountItem(this.props.discountItemId);
     }
 
     open = () => {

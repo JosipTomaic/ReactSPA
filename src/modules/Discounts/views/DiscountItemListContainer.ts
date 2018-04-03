@@ -8,7 +8,7 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchDiscountItems: () => dispatch(fetchDiscountItemsAction()),
+    fetchDiscountItems: () => dispatch(fetchDiscountItemsAction())
 });
 
 export const DiscountItemListContainer = connect(
