@@ -1,6 +1,6 @@
 import { DiscountItem } from '../model';
 
-export const discountsList: DiscountItem[] = [
+const discountsList: DiscountItem[] = [
     {
         id: 1,
         name: '50% of on this Iron Maiden T-shirt',
@@ -32,7 +32,7 @@ export const discountsList: DiscountItem[] = [
     }
 ];
 
-export function GetAllDiscounts() {
+export const GetAllDiscounts = (): DiscountItem[] => {
     return discountsList;
 }
 
