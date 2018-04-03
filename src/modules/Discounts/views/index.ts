@@ -1,2 +1,2 @@
 export { DiscountItemDetails } from './DiscountItemDetails';
-export { DiscountItemList } from './DiscountItemList';
+export { DiscountItemListContainer } from './DiscountItemListContainer';

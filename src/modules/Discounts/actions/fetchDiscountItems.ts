@@ -3,6 +3,7 @@ import { DiscountItem } from '../model';
 
 export const fetchDiscountItemsAction = () => (dispatch) => {
     let discountItems = GetAllDiscounts();
+    console.log("dohvaćeni podaci...");
     dispatch(fetchDiscountItemsCompleted(discountItems));
 }
 
