@@ -1,3 +1,3 @@
 export { GetAllDiscounts, GetSpecificDiscount } from './constants';
-export { DiscountItemDetails, DiscountItemListContainer } from './views';
+export { DiscountItemDetails, DiscountItemList } from './views';
 export { state, State } from './reducers';

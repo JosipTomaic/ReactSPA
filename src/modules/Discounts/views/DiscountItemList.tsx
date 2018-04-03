@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { GetAllDiscounts } from '../constants';
 import { Link } from 'react-router-dom';
 import '../views/DiscountItemList.css';
 import { discountListText } from '../enums'
