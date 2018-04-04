@@ -19,7 +19,6 @@ export class SocialSharing extends React.Component<SocialSharingProps, {}> {
             points: currentPoints,
             initialState: (JSON.parse(pointsObject ? pointsObject : '{}')).initialState
         }));
-        //this.props.history.push('/');
     }
 
     render() {
