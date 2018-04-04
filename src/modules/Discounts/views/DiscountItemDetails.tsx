@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { GetSpecificDiscount } from '../../Discounts';
 import { QRCodeReader } from '../../QR';
 import { SocialSharing } from '../../Social';
-import { Page404 } from '../../Page404';
+import { Page404 } from '../../../components';
 import './DiscountItemDetails.css';
 import { priceState } from '../enums';
 

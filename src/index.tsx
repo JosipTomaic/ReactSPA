@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import { Routing } from 'modules';
 import './index.css';
-import { Header } from 'modules';
+import { Header } from './components';
 
 ReactDOM.render(
   <div className="App">

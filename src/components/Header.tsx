@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { globalEnum } from '../enums';
 
-const LOGO = require('../../logo.svg');
+const LOGO = require('../logo.svg');
 
 export const Header = () => {
     return (<header className="App-header">
