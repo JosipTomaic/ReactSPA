@@ -6,6 +6,10 @@ import { ApplicationState } from '../';
 import { DiscountItem } from '../model';
 import { fetchDiscountItemsAction } from '../actions';
 import { connect } from 'react-redux';
+import ReactLoading from 'react-loading';
+
+const TYPE = "bars";
+const COLOR = "black";
 
 const mapStateToProps = (state: ApplicationState) => ({
     discounts: state.discount.discountItems,
@@ -29,31 +33,36 @@ class DiscountItemList extends React.Component<DiscountItemListProps, {}> {
     }
 
     render() {
-        return (
-            <div>
-                <h2>{discountListText.allAvailable}</h2>
-                <ul>
-                    {
-                        this.props.discounts.map((item) =>
-                            (
-                                <li key={item.id}>
-                                    <Link to={`/discount/${item.id}`}>
-                                        <div>
-                                            <img src={item.image} />
+        if(this.props.isFetching){
+            return <ReactLoading type={TYPE} color={COLOR} height='667' width='375' />
+        }
+        else{
+            return (
+                <div>
+                    <h2>{discountListText.allAvailable}</h2>
+                    <ul>
+                        {
+                            this.props.discounts.map((item) =>
+                                (
+                                    <li key={item.id}>
+                                        <Link to={`/discount/${item.id}`}>
+                                            <div>
+                                                <img src={item.image} />
+                                            </div>
+                                            <h4>{item.name}</h4>
+                                        </Link>
+                                        <div className="inlinePrices">
+                                            <span className="regularPrice">{item.regularPrice} HRK</span>
+                                            <span className="discountPrice">{item.discountPrice} HRK</span>
                                         </div>
-                                        <h4>{item.name}</h4>
-                                    </Link>
-                                    <div className="inlinePrices">
-                                        <span className="regularPrice">{item.regularPrice} HRK</span>
-                                        <span className="discountPrice">{item.discountPrice} HRK</span>
-                                    </div>
-                                </li>
+                                    </li>
+                                )
                             )
-                        )
-                    }
-                </ul>
-            </div>
-        );
+                        }
+                    </ul>
+                </div>
+            );
+        }
     }
 };
 
