@@ -1,7 +1,7 @@
 import { DiscountState, LoyaltyState } from 'modules';
 import { combineReducers, Store, createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { DiscountReducer, LoyaltyReducer } from '../modules'
+import { DiscountReducer } from '../modules'
 
 export interface ApplicationState {
     discount: DiscountState;
@@ -9,8 +9,7 @@ export interface ApplicationState {
 }
 
 export const allReducers = {
-    discount: DiscountReducer,
-    loyalty: LoyaltyReducer
+    discount: DiscountReducer
 };
 
 export interface AppThunkAction<TAction> {

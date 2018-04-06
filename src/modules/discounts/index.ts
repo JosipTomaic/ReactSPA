@@ -1,5 +1,5 @@
 export { discountsList, GetSpecificDiscount } from './constants';
-export { DiscountItemDetails, DiscountItemList } from './views';
+export { DiscountItemDetails, DiscountItemListWrapper } from './views';
 export { DiscountState, RedeemedDiscount } from './model';
-export { AppThunkAction } from '../';
+export { AppThunkAction, ApplicationState } from '../';
 export { DiscountReducer } from './DiscountReducer';

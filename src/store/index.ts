@@ -1,1 +1,1 @@
-export { AppThunkAction, configureStore } from './store';
+export { AppThunkAction, configureStore, ApplicationState } from './store';
