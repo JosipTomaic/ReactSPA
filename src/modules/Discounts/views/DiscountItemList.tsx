@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import '../views/DiscountItemList.css';
 import { discountListText } from '../enums'
-import { ApplicationState } from '../';
+import { ApplicationState } from 'store';
 import { DiscountItem } from '../model';
 import { fetchDiscountItemsAction } from '../actions';
 import { connect } from 'react-redux';

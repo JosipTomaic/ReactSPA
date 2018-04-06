@@ -1,7 +1,6 @@
-import { RedeemedDiscount } from '.'
-
 export interface LoyaltyState {
+    isFetching: boolean;
+    isSettingInitial: boolean;
     loyaltyPoints: number;
-    redeemedDiscounts: RedeemedDiscount[];
     isInitialSet: boolean;
 }
