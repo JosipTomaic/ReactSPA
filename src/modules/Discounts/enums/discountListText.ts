@@ -1,3 +1,3 @@
-export enum discountListText{
+export enum DiscountListText{
     allAvailable = "All available discounts"
 }

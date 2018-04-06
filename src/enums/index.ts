@@ -1,1 +1,1 @@
-export { globalEnum } from './globalEnum';
+export { GlobalEnum } from './globalEnum';

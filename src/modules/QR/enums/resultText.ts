@@ -1,3 +1,3 @@
-export enum resultText {
+export enum ResultText {
     noResult = "No result"
 }

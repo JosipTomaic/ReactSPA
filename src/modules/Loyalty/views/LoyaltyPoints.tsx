@@ -31,19 +31,9 @@ interface LoyaltyPointsProps {
 
 class LoyaltyPoints extends React.Component<LoyaltyPointsProps, {}> {
 
-    componentWillMount() {
-        this.pointsInitialState();
-        let currentPoints = localStorage.getItem('points');
-        this.setState({ 
-            points: (JSON.parse(currentPoints ? currentPoints : '{}')).points, 
-            initialState: (JSON.parse(currentPoints ? currentPoints : '{}')).initialState 
-        });
-    }
-
-    pointsInitialState() {
-        if (!localStorage.getItem('points')) {
-            localStorage.setItem('points', JSON.stringify({ points: 0, initialState: true }));
-        }
+    componentDidMount() {
+        this.props.setInitialPoints();
+        this.props.fetchLoyaltyPoints();
     }
 
     render() {

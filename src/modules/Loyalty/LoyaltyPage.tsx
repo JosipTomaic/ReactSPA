@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { LoyaltyPoints } from './views';
+import { LoyaltyPointsWrapper } from './views';
 import { DiscountItemListWrapper } from 'modules/Discounts';
 
 export const LoyaltyPage = () => {
     return (
         <div>
-            <LoyaltyPoints />
+            <LoyaltyPointsWrapper />
             <DiscountItemListWrapper />
         </div>
     );

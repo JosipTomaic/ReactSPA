@@ -1,2 +1,2 @@
-export { priceState } from './priceState';
-export { discountListText } from './discountListText';
+export { PriceState } from './priceState';
+export { DiscountListText } from './discountListText';

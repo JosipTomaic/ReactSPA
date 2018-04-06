@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import '../views/DiscountItemList.css';
-import { discountListText } from '../enums'
+import { DiscountListText } from '../enums'
 import { ApplicationState } from 'store';
 import { DiscountItem } from '../model';
 import { fetchDiscountItemsAction } from '../actions';
@@ -39,7 +39,7 @@ class DiscountItemList extends React.Component<DiscountItemListProps, {}> {
         else{
             return (
                 <div>
-                    <h2>{discountListText.allAvailable}</h2>
+                    <h2>{DiscountListText.allAvailable}</h2>
                     <ul>
                         {
                             this.props.discounts.map((item) =>

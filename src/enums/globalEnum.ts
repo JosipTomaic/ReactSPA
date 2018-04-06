@@ -1,3 +1,3 @@
-export enum globalEnum{
+export enum GlobalEnum{
     title = "Welcome to MusicPassion"
 }

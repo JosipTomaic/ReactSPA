@@ -1,1 +1,1 @@
-export { LoyaltyPoints } from './LoyaltyPoints';
+export { LoyaltyPointsWrapper } from './LoyaltyPoints';

@@ -1,2 +1,2 @@
-export { resultText } from './resultText';
-export { cameraType } from './cameraType';
+export { ResultText } from './resultText';
+export { CameraType } from './cameraType';

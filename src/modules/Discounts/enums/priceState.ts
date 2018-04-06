@@ -1,4 +1,4 @@
-export enum priceState{
+export enum PriceState{
     then = "Then",
     now = "Now"
 }
