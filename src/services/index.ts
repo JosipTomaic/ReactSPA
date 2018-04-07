@@ -1,0 +1,1 @@
+export { saveToLocalStorage, getFromLocalStorage } from './LocalStorageService';

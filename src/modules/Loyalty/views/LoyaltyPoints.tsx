@@ -4,9 +4,7 @@ import './LoyaltyPoints.css';
 import { fetchLoyaltyPointsAction, setInitialLoyaltyPointsAction } from '../actions';
 import { connect } from 'react-redux';
 import ReactLoading from 'react-loading';
-
-const TYPE = "bars";
-const COLOR = "black";
+import { LoadingAnimationSettings } from 'enums';
 
 const mapStateToProps = (state: ApplicationState) => ({
     loyaltyPoints: state.loyalty.loyaltyPoints,
@@ -38,7 +36,7 @@ class LoyaltyPoints extends React.Component<LoyaltyPointsProps, {}> {
 
     render() {
         if(this.props.isFetching){
-            return <ReactLoading type={TYPE} color={COLOR} height='667' width='375' />
+            return <ReactLoading type={LoadingAnimationSettings.Type} color={LoadingAnimationSettings.Color} height='667' width='375' />
         }
         else{
             return (
