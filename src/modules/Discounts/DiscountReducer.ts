@@ -2,7 +2,6 @@ import { DiscountAction, DiscountActionTypes } from './actions';
 import { DiscountState } from './model';
 
 const INITIAL_STATE: DiscountState = {
-    discountId: -1,
     isFetching: false,
     isSharing: false,
     discountItems: [],

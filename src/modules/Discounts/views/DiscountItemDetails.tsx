@@ -13,7 +13,6 @@ import { DiscountItem } from '../model';
 import { toggleQRCodeReader } from 'modules';
 
 const mapStateToProps = (state: ApplicationState) => ({
-    discountId: state.discount.discountId,
     isFetching: state.discount.isFetching,
     isCameraShowing: state.qr.isCameraShowing,
     discount: state.discount.discountItem
@@ -25,7 +24,11 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 interface DiscountItemDetailsProps {
-    discountId: number,
+    match:{
+        params: {
+            id: string
+        }
+    }
     isFetching: boolean,
     isCameraShowing: boolean,
     discount: DiscountItem,
@@ -36,7 +39,7 @@ interface DiscountItemDetailsProps {
 class DiscountItemDetails extends React.Component<DiscountItemDetailsProps, {}> {
 
     componentDidMount() {
-        this.props.fetchDiscountById(this.props.discountId);
+        this.props.fetchDiscountById(parseInt(this.props.match.params.id, 10));
     }
 
     openQRCodeReader = () => {
