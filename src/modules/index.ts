@@ -1,4 +1,4 @@
-export { DiscountItemDetails, DiscountItemListWrapper, DiscountState, RedeemedDiscount, DiscountReducer } from './Discounts';
+export { DiscountItemDetailsWrapper, DiscountItemListWrapper, DiscountState, RedeemedDiscount, DiscountReducer } from './Discounts';
 export { Routing } from './Routing';
 export { LoyaltyPage, LoyaltyState, LoyaltyReducer } from './Loyalty';
 export { QRCodeReaderWrapper, QRReducer, QRState, toggleQRCodeReader, toggleCameraType } from './QR';

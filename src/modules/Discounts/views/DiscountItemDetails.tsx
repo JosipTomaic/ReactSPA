@@ -13,6 +13,7 @@ import { DiscountItem } from '../model';
 import { toggleQRCodeReader } from 'modules';
 
 const mapStateToProps = (state: ApplicationState) => ({
+    discountId: state.discount.discountId,
     isFetching: state.discount.isFetching,
     isCameraShowing: state.qr.isCameraShowing,
     discount: state.discount.discountItem
@@ -24,11 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 interface DiscountItemDetailsProps {
-    match: {
-        params: {
-            id: string
-        }
-    }
+    discountId: number,
     isFetching: boolean,
     isCameraShowing: boolean,
     discount: DiscountItem,
@@ -36,11 +33,10 @@ interface DiscountItemDetailsProps {
     toggleQRCodeReader(): void;
 }
 
-export class DiscountItemDetails extends React.Component<DiscountItemDetailsProps, {}> {
+class DiscountItemDetails extends React.Component<DiscountItemDetailsProps, {}> {
 
     componentDidMount() {
-        console.log("");
-        this.props.fetchDiscountById(parseInt(this.props.match.params.id, 10));
+        this.props.fetchDiscountById(this.props.discountId);
     }
 
     openQRCodeReader = () => {
@@ -48,19 +44,20 @@ export class DiscountItemDetails extends React.Component<DiscountItemDetailsProp
     }
 
     render() {
+        const { name, image, regularPrice, discountPrice } = this.props.discount;
         if (this.props.discount) {
             if (!this.props.isCameraShowing) {
                 return (
                     <div>
                         <Panel>
-                            <Panel.Heading>{ this.props.discount.name }</Panel.Heading>
+                            <Panel.Heading>{ name }</Panel.Heading>
                             <Panel.Body>
-                                <img src={ this.props.discount.image } />
+                                <img src={ image } />
                             </Panel.Body>
                             <ListGroup>
-                                <ListGroupItem>{`${ PriceState.then } : ${ this.props.discount.regularPrice } HRK`}</ListGroupItem>
+                                <ListGroupItem>{`${ PriceState.then } : ${ regularPrice } HRK`}</ListGroupItem>
                                 <ListGroupItem className="discountPrice">
-                                    {`${ PriceState.now } : ${ this.props.discount.discountPrice } HRK`}
+                                    {`${ PriceState.now } : ${ discountPrice } HRK`}
                                 </ListGroupItem>
                             </ListGroup>
                             <Panel.Body>

@@ -1,2 +1,2 @@
-export { DiscountItemDetails } from './DiscountItemDetails';
+export { DiscountItemDetailsWrapper } from './DiscountItemDetails';
 export { DiscountItemListWrapper } from './DiscountItemList';
