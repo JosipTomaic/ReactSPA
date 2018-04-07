@@ -1,16 +1,19 @@
-import { DiscountState, LoyaltyState } from 'modules';
+import { DiscountState, LoyaltyState, DiscountReducer, LoyaltyReducer, QRReducer, QRState, SocialState, SocialReducer } from 'modules';
 import { combineReducers, Store, createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { DiscountReducer, LoyaltyReducer } from '../modules'
 
 export interface ApplicationState {
     discount: DiscountState;
     loyalty: LoyaltyState;
+    qr: QRState;
+    social: SocialState;
 }
 
 export const allReducers = {
     discount: DiscountReducer,
-    loyalty: LoyaltyReducer
+    loyalty: LoyaltyReducer,
+    qr: QRReducer,
+    social: SocialReducer
 };
 
 export interface AppThunkAction<TAction> {

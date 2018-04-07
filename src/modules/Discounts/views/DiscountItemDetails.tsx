@@ -1,81 +1,66 @@
 import * as React from 'react';
 import { Panel, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { QRCodeReader } from '../../QR';
-import { SocialSharing } from '../../Social';
+import { QRCodeReaderWrapper } from '../../QR';
+import { SocialSharingWrapper } from '../../Social';
 import { Page404 } from '../../../components';
 import './DiscountItemDetails.css';
 import { PriceState } from '../enums';
 import { ApplicationState } from 'store';
-import { fetchDiscountItemByIdAction, toggleQRCodeReader, toggleSocialShare } from '../actions';
+import { fetchDiscountItemByIdAction } from '../actions';
 import { connect } from 'react-redux';
 import { DiscountItem } from '../model';
+import { toggleQRCodeReader } from 'modules';
 
 const mapStateToProps = (state: ApplicationState) => ({
     isFetching: state.discount.isFetching,
-    isCameraShowing: state.discount.isCameraShowing,
-    isSharing: state.discount.isSharing,
+    isCameraShowing: state.qr.isCameraShowing,
     discount: state.discount.discountItem
 });
 
 const mapDispatchToProps = (dispatch) => ({
     fetchDiscountById: (id: number) => dispatch(fetchDiscountItemByIdAction(id)),
     toggleQRCodeReader: () => dispatch(toggleQRCodeReader()),
-    toggleSocialShare: () => dispatch(toggleSocialShare())
 });
 
 interface DiscountItemDetailsProps {
-    isFetching: boolean,
-    isCameraShowing: boolean,
-    isSharing: boolean,
-    discount: DiscountItem,
     match: {
         params: {
             id: string
         }
-    };
+    }
+    isFetching: boolean,
+    isCameraShowing: boolean,
+    discount: DiscountItem,
     fetchDiscountById(id: number): void;
     toggleQRCodeReader(): void;
-    toggleSocialShare(): void;
 }
 
 export class DiscountItemDetails extends React.Component<DiscountItemDetailsProps, {}> {
 
-    componentWillMount() {
-        this.props.fetchDiscountById(parseInt(JSON.stringify(this.props.match.params.id), 10));
+    componentDidMount() {
+        console.log("");
+        this.props.fetchDiscountById(parseInt(this.props.match.params.id, 10));
     }
 
     openQRCodeReader = () => {
         this.props.toggleQRCodeReader();
     }
 
-    // closeQRCodeReader = () => {
-    //     this.setState({ showCamera: false });
-    // }
-
-    // handleClose = () => {
-    //     this.setState({ showSharing: false });
-    // }
-
-    openSocialShareModal = () => {
-        this.props.toggleSocialShare();
-    }
-
     render() {
-        const { name, image, regularPrice, discountPrice} = this.props.discount;
         if (this.props.discount) {
             if (!this.props.isCameraShowing) {
                 return (
                     <div>
                         <Panel>
-                            <Panel.Heading>{ name }</Panel.Heading>
+                            <Panel.Heading>{ this.props.discount.name }</Panel.Heading>
                             <Panel.Body>
-                                <img src={ image } />
+                                <img src={ this.props.discount.image } />
                             </Panel.Body>
                             <ListGroup>
-                                <ListGroupItem>{`${ PriceState.then } : ${ regularPrice } HRK`}</ListGroupItem>
+                                <ListGroupItem>{`${ PriceState.then } : ${ this.props.discount.regularPrice } HRK`}</ListGroupItem>
                                 <ListGroupItem className="discountPrice">
-                                    {`${ PriceState.now } : ${ discountPrice } HRK`}
+                                    {`${ PriceState.now } : ${ this.props.discount.discountPrice } HRK`}
                                 </ListGroupItem>
                             </ListGroup>
                             <Panel.Body>
@@ -92,8 +77,8 @@ export class DiscountItemDetails extends React.Component<DiscountItemDetailsProp
             } else {
                 return (
                     <div>
-                        <QRCodeReader />
-                        <SocialSharing discountPrice={ discountPrice }/>
+                        <QRCodeReaderWrapper />
+                        <SocialSharingWrapper />
                     </div>
                 );
             }

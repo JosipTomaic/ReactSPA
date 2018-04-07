@@ -27,29 +27,15 @@ export interface SaveRedeemedDiscountSuccess {
     type: DiscountActionTypes.SAVE_REDEEMED_DISCOUNT_COMPLETED;
 }
 
-export interface ToggleQRCodeReaderRequest {
-    type: DiscountActionTypes.TOGGLE_QR_CODE_READER_START;
-}
-
-export interface ToggleQRCodeReaderSuccess {
-    type: DiscountActionTypes.TOGGLE_QR_CODE_READER_COMPLETED;
-}
-
-export interface ToggleSocialShareRequest {
-    type: DiscountActionTypes.TOGGLE_SOCIAL_SHARE_START;
-}
-
-export interface ToggleSocialShareSuccess {
-    type: DiscountActionTypes.TOGGLE_SOCIAL_SHARE_COMPLETED;
+export interface SetDiscountIdSuccess {
+    type: DiscountActionTypes.SET_DISCOUNT_ID;
+    payload: number;
 }
 
 export type DiscountAction = FetchDiscountItemRequest | 
     FetchDiscountItemsRequest |
     SaveRedeemedDiscountRequest |
-    ToggleQRCodeReaderRequest | 
-    ToggleSocialShareRequest | 
     FetchDiscountItemByIdSuccess | 
     FetchDiscountItemsSuccess |
-    SaveRedeemedDiscountSuccess |
-    ToggleQRCodeReaderSuccess | 
-    ToggleSocialShareSuccess;
+    SaveRedeemedDiscountSuccess | 
+    SetDiscountIdSuccess;

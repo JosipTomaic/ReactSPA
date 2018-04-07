@@ -1,7 +1,7 @@
 import { GetAllDiscounts, GetSpecificDiscount } from '../../constants';
 import { DiscountAction } from './discount.creators';
 import { DiscountActionTypes } from './discount.types';
-import { AppThunkAction, RedeemedDiscount, saveToLocalStorage } from '../../'
+import { AppThunkAction, RedeemedDiscount, saveToLocalStorage, getFromLocalStorage } from '../../'
 import { LocalStorageKeys } from 'enums/localStorageKeys';
 
 export const fetchDiscountItemsAction = (): AppThunkAction<DiscountAction> => async (dispatch, getState) => {
@@ -18,20 +18,17 @@ export const fetchDiscountItemByIdAction = (id: number): AppThunkAction<Discount
 
 export const saveRedeemedDiscount = (discount: RedeemedDiscount): AppThunkAction<DiscountAction> => async (dispatch, getState) => {
     dispatch({ type: DiscountActionTypes.SAVE_REDEEMED_DISCOUNT_START });
-    saveToLocalStorage(LocalStorageKeys.RedeemedDiscounts, JSON.stringify(discount));
+    var currentRedeemedDiscounts = getFromLocalStorage(LocalStorageKeys.RedeemedDiscounts);
+    let redeemedDiscounts = new Array();
+    redeemedDiscounts.push(discount);
+    redeemedDiscounts = [ ...redeemedDiscounts, JSON.parse(currentRedeemedDiscounts ? currentRedeemedDiscounts : '{}')];
+    saveToLocalStorage(LocalStorageKeys.RedeemedDiscounts, JSON.stringify(redeemedDiscounts));
     dispatch({ type: DiscountActionTypes.SAVE_REDEEMED_DISCOUNT_COMPLETED });
 }
 
-export const toggleQRCodeReader = (): AppThunkAction<DiscountAction> => async (dispatch, getState) => {
-    if(!getState().discount.isCameraShowing)
-        dispatch({ type: DiscountActionTypes.TOGGLE_QR_CODE_READER_START });
-    else
-        dispatch({ type: DiscountActionTypes.TOGGLE_QR_CODE_READER_COMPLETED });
-}
-
-export const toggleSocialShare = (): AppThunkAction<DiscountAction> => async (dispatch, getState) => {
-    if(!getState().discount.isSharing)
-        dispatch({ type: DiscountActionTypes.TOGGLE_SOCIAL_SHARE_START });
-    else
-        dispatch({ type: DiscountActionTypes.TOGGLE_SOCIAL_SHARE_COMPLETED });
+export const setDiscountId = (id: number): AppThunkAction<DiscountAction> => async (dispatch, getState) => {
+    if(id != undefined){
+        dispatch({ type: DiscountActionTypes.SET_DISCOUNT_ID, payload: id});
+        console.log(getState());
+    }
 }
