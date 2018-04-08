@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import '../views/DiscountItemList.css';
+import './DiscountItemList.css';
 import { DiscountListText } from '../enums'
 import { ApplicationState } from 'store';
 import { DiscountItem } from '../model';
