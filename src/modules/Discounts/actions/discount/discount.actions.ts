@@ -1,8 +1,10 @@
-import { GetAllDiscounts, GetSpecificDiscount } from '../../constants';
 import { DiscountAction } from './discount.creators';
 import { DiscountActionTypes } from './discount.types';
-import { AppThunkAction, RedeemedDiscount, saveToLocalStorage, getFromLocalStorage } from '../../'
 import { LocalStorageKeys } from 'enums/localStorageKeys';
+import { AppThunkAction } from 'store';
+import { RedeemedDiscount } from 'modules';
+import { getFromLocalStorage, saveToLocalStorage } from 'services';
+import { GetSpecificDiscount, GetAllDiscounts } from 'modules/Discounts';
 
 export const fetchDiscountItemsAction = (): AppThunkAction<DiscountAction> => async (dispatch, getState) => {
     dispatch({ type: DiscountActionTypes.FETCH_ALL_DISCOUNTS_START });

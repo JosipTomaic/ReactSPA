@@ -1,7 +1,7 @@
 import { QRAction } from './qr.creators';
 import { QRActionTypes } from './qr.types';
-import { AppThunkAction } from '../../'
 import { CameraType } from '../enums';
+import { AppThunkAction } from 'store';
 
 export const toggleQRCodeReader = (): AppThunkAction<QRAction> => async (dispatch, getState) => {
     if(!getState().qr.isCameraShowing)
