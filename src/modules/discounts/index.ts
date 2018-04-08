@@ -1,4 +1,4 @@
-export { discountsList, GetSpecificDiscount, GetAllDiscounts } from './constants';
+export { discountsList, GetSpecificDiscount } from './constants';
 export { DiscountItemDetailsWrapper, DiscountItemListWrapper } from './views';
 export { DiscountState, RedeemedDiscount } from './model';
 export { AppThunkAction, ApplicationState } from '../';

@@ -1,6 +1,6 @@
 import { SocialAction } from './social.creators';
 import { SocialActionTypes } from './social.types';
-import { AppThunkAction } from 'store';
+import { AppThunkAction } from '../../'
 
 export const toggleSocialShare = (): AppThunkAction<SocialAction> => async (dispatch, getState) => {
     if(!getState().social.isSharing)

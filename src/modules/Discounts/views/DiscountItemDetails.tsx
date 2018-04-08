@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { Panel, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { QRCodeReaderWrapper } from '../../QR';
+import { SocialSharingWrapper } from '../../Social';
+import { Page404 } from '../../../components';
 import './DiscountItemDetails.css';
 import { PriceState } from '../enums';
 import { ApplicationState } from 'store';
 import { fetchDiscountItemByIdAction } from '../actions';
 import { connect } from 'react-redux';
 import { DiscountItem } from '../model';
-import { toggleQRCodeReader, RedeemedDiscount, QRCodeReaderWrapper, SocialSharingWrapper } from 'modules';
+import { toggleQRCodeReader, RedeemedDiscount } from 'modules';
 import { LocalStorageKeys } from 'enums';
 import { getFromLocalStorage } from 'services';
 import { PageAlreadyRedeemed } from 'components/PageAlreadyRedeemed';
-import { Page404 } from 'components';
 
 const mapStateToProps = (state: ApplicationState) => ({
     isFetching: state.discount.isFetching,

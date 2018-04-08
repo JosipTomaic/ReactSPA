@@ -1,10 +1,10 @@
 import { LoyaltyAction } from './loyalty.creators';
 import { LoyaltyActionTypes } from './loyalty.types';
-import { AppThunkAction } from 'store';
+import { AppThunkAction } from '../../'
 import { LocalStorageKeys } from 'enums';
 
 export const setInitialLoyaltyPointsAction = (): AppThunkAction<LoyaltyAction> => async (dispatch, getState) => {
-    if(localStorage.getItem(LocalStorageKeys.LoyaltyPoints) === null){
+    if(!localStorage.getItem(LocalStorageKeys.LoyaltyPoints)){
         dispatch({ type: LoyaltyActionTypes.SET_INITIAL_POINTS_START });
         await localStorage.setItem(LocalStorageKeys.LoyaltyPoints, JSON.stringify({ points: 0, initialState: true }));
         dispatch({ type: LoyaltyActionTypes.SET_INITIAL_POINTS_COMPLETED });
