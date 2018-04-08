@@ -10,7 +10,10 @@ import { ApplicationState } from 'store';
 import { fetchDiscountItemByIdAction } from '../actions';
 import { connect } from 'react-redux';
 import { DiscountItem } from '../model';
-import { toggleQRCodeReader } from 'modules';
+import { toggleQRCodeReader, RedeemedDiscount } from 'modules';
+import { LocalStorageKeys } from 'enums';
+import { getFromLocalStorage } from 'services';
+import { PageAlreadyRedeemed } from 'components/PageAlreadyRedeemed';
 
 const mapStateToProps = (state: ApplicationState) => ({
     isFetching: state.discount.isFetching,
@@ -46,10 +49,29 @@ class DiscountItemDetails extends React.Component<DiscountItemDetailsProps, {}> 
         this.props.toggleQRCodeReader();
     }
 
+    checkIfRedeemed = (discount: RedeemedDiscount) => {
+        var redeemedDiscounts = getFromLocalStorage(LocalStorageKeys.RedeemedDiscounts);
+        if(redeemedDiscounts === null){
+            return false;
+        }
+        else{
+            var  redeemedArray = new Array<RedeemedDiscount>();
+            redeemedArray = JSON.parse(redeemedDiscounts || '{}');
+            debugger;
+            if(redeemedArray.find(item => item.id === discount.id)){
+                return true;
+            }
+            else return false;
+        }
+    }
+
     render() {
         const { name, image, regularPrice, discountPrice } = this.props.discount;
         if (this.props.discount) {
-            if (!this.props.isCameraShowing) {
+            if(this.checkIfRedeemed){
+                return (<PageAlreadyRedeemed />)
+            }
+            else if (!this.props.isCameraShowing) {
                 return (
                     <div>
                         <Panel>

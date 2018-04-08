@@ -9,7 +9,7 @@ import { getFromLocalStorage, saveToLocalStorage } from 'services';
 import { LocalStorageKeys } from 'enums';
 import { DiscountItem, RedeemedDiscount } from '../Discounts/model';
 import { saveRedeemedDiscount } from '../Discounts/actions';
-import { SharingLinks, ErrorMessages } from './enums';
+import { SharingLinks } from './enums';
 
 const mapStateToProps = (state: ApplicationState) => ({
     isSharing: state.social.isSharing,
@@ -32,36 +32,15 @@ class SocialSharing extends React.Component<SocialSharingProps, {}> {
 
     redeemDiscount = () => {
         let discount: RedeemedDiscount = { ...this.props.discount, dateRedeemed: new Date() };
-        if(!this.checkIfRedeemed(discount)){    
-            var points =  this.props.discount.discountPrice * 0.5;
-            var pointsObject = getFromLocalStorage(LocalStorageKeys.LoyaltyPoints);
-            var currentPoints = parseInt((JSON.parse(pointsObject || '{}')).points, 10) + points;
-            saveToLocalStorage(LocalStorageKeys.LoyaltyPoints, JSON.stringify({
-                points: currentPoints,
-                initialState: (JSON.parse(pointsObject || '{}')).initialState
-            }));
-            this.props.saveRedeemedDiscount(discount);
-        }
-        else {
-            window.alert(ErrorMessages.AlreadyRedeemed);
-        }
+        var points = this.props.discount.discountPrice * 0.5;
+        var pointsObject = getFromLocalStorage(LocalStorageKeys.LoyaltyPoints);
+        var currentPoints = parseInt((JSON.parse(pointsObject || '{}')).points, 10) + points;
+        saveToLocalStorage(LocalStorageKeys.LoyaltyPoints, JSON.stringify({
+            points: currentPoints,
+            initialState: (JSON.parse(pointsObject || '{}')).initialState
+        }));
+        this.props.saveRedeemedDiscount(discount);
         this.props.toggleSocialShare();
-    }
-
-    checkIfRedeemed(discount: RedeemedDiscount){
-        var redeemedDiscounts = getFromLocalStorage(LocalStorageKeys.RedeemedDiscounts);
-        if(redeemedDiscounts === null){
-            return false;
-        }
-        else{
-            var  redeemedArray = new Array<RedeemedDiscount>();
-            redeemedArray = JSON.parse(redeemedDiscounts || '{}');
-            debugger;
-            if(redeemedArray.find(item => item.id === discount.id)){
-                return true;
-            }
-            else return false;
-        }
     }
 
     render() {
