@@ -31,6 +31,5 @@ export const saveRedeemedDiscount = (discount: RedeemedDiscount): AppThunkAction
 export const setDiscountId = (id: number): AppThunkAction<DiscountAction> => async (dispatch, getState) => {
     if(id != undefined){
         dispatch({ type: DiscountActionTypes.SET_DISCOUNT_ID, payload: id});
-        console.log(getState());
     }
 }

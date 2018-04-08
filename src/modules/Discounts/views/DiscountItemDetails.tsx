@@ -49,7 +49,7 @@ class DiscountItemDetails extends React.Component<DiscountItemDetailsProps, {}> 
         this.props.toggleQRCodeReader();
     }
 
-    checkIfRedeemed = (discount: RedeemedDiscount) => {
+    checkIfRedeemed = (discount: DiscountItem) => {
         var redeemedDiscounts = getFromLocalStorage(LocalStorageKeys.RedeemedDiscounts);
         if(redeemedDiscounts === null){
             return false;
@@ -57,7 +57,6 @@ class DiscountItemDetails extends React.Component<DiscountItemDetailsProps, {}> 
         else{
             var  redeemedArray = new Array<RedeemedDiscount>();
             redeemedArray = JSON.parse(redeemedDiscounts || '{}');
-            debugger;
             if(redeemedArray.find(item => item.id === discount.id)){
                 return true;
             }
@@ -68,7 +67,7 @@ class DiscountItemDetails extends React.Component<DiscountItemDetailsProps, {}> 
     render() {
         const { name, image, regularPrice, discountPrice } = this.props.discount;
         if (this.props.discount) {
-            if(this.checkIfRedeemed){
+            if(this.checkIfRedeemed(this.props.discount)){
                 return (<PageAlreadyRedeemed />)
             }
             else if (!this.props.isCameraShowing) {
