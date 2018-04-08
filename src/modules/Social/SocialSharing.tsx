@@ -35,24 +35,33 @@ class SocialSharing extends React.Component<SocialSharingProps, {}> {
         if(!this.checkIfRedeemed(discount)){    
             var points =  this.props.discount.discountPrice * 0.5;
             var pointsObject = getFromLocalStorage(LocalStorageKeys.LoyaltyPoints);
-            var currentPoints = parseInt((JSON.parse(pointsObject ? pointsObject : '{}')).points, 10) + points;
+            var currentPoints = parseInt((JSON.parse(pointsObject || '{}')).points, 10) + points;
             saveToLocalStorage(LocalStorageKeys.LoyaltyPoints, JSON.stringify({
                 points: currentPoints,
-                initialState: (JSON.parse(pointsObject ? pointsObject : '{}')).initialState
+                initialState: (JSON.parse(pointsObject || '{}')).initialState
             }));
             this.props.saveRedeemedDiscount(discount);
         }
-        else window.alert(ErrorMessages.AlreadyRedeemed);
+        else {
+            window.alert(ErrorMessages.AlreadyRedeemed);
+        }
+        this.props.toggleSocialShare();
     }
 
     checkIfRedeemed(discount: RedeemedDiscount){
         var redeemedDiscounts = getFromLocalStorage(LocalStorageKeys.RedeemedDiscounts);
-        let redeemedArray = new Array();
-        redeemedArray = JSON.parse(redeemedDiscounts ? redeemedDiscounts : '{}');
-        if(redeemedArray.filter(item => item.name === discount.name)){
-            return true;
+        if(redeemedDiscounts === null){
+            return false;
         }
-        else return false;
+        else{
+            var  redeemedArray = new Array<RedeemedDiscount>();
+            redeemedArray = JSON.parse(redeemedDiscounts || '{}');
+            debugger;
+            if(redeemedArray.find(item => item.id === discount.id)){
+                return true;
+            }
+            else return false;
+        }
     }
 
     render() {

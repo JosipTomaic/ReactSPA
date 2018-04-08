@@ -10,4 +10,9 @@ export interface ToggleCameraType {
     payload: string;
 }
 
-export type QRAction = ToggleQRCodeReader | ToggleCameraType;
+export interface SaveScanResult {
+    type: QRActionTypes.SAVE_SCAN_RESULT;
+    payload: string;
+}
+
+export type QRAction = ToggleQRCodeReader | ToggleCameraType | SaveScanResult;

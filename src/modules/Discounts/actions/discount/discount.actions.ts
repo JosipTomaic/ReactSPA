@@ -18,10 +18,12 @@ export const fetchDiscountItemByIdAction = (id: number): AppThunkAction<Discount
 
 export const saveRedeemedDiscount = (discount: RedeemedDiscount): AppThunkAction<DiscountAction> => async (dispatch, getState) => {
     dispatch({ type: DiscountActionTypes.SAVE_REDEEMED_DISCOUNT_START });
-    var currentRedeemedDiscounts = getFromLocalStorage(LocalStorageKeys.RedeemedDiscounts);
-    let redeemedDiscounts = new Array();
+    let redeemedDiscounts = new Array<RedeemedDiscount>();
+    if(getFromLocalStorage(LocalStorageKeys.RedeemedDiscounts) !== null){
+        var currentRedeemedDiscounts = getFromLocalStorage(LocalStorageKeys.RedeemedDiscounts);
+        redeemedDiscounts = JSON.parse(currentRedeemedDiscounts || '{}');
+    }
     redeemedDiscounts.push(discount);
-    redeemedDiscounts = [ ...redeemedDiscounts, JSON.parse(currentRedeemedDiscounts ? currentRedeemedDiscounts : '{}')];
     saveToLocalStorage(LocalStorageKeys.RedeemedDiscounts, JSON.stringify(redeemedDiscounts));
     dispatch({ type: DiscountActionTypes.SAVE_REDEEMED_DISCOUNT_COMPLETED });
 }

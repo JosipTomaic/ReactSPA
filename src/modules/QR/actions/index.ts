@@ -1,3 +1,3 @@
 export { QRActionTypes } from './qr.types';
 export { QRAction } from './qr.creators';
-export { toggleQRCodeReader, toggleCameraType } from './qr.actions';
+export { toggleQRCodeReader, toggleCameraType, saveScanResult } from './qr.actions';

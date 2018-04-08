@@ -3,35 +3,42 @@ import QrReader from 'react-qr-reader';
 import { Button } from 'react-bootstrap';
 import { ResultText, CameraSettings } from './enums';
 import { ApplicationState } from 'store';
-import { toggleSocialShare, toggleQRCodeReader, toggleCameraType } from 'modules';
+import { toggleQRCodeReader, toggleCameraType, saveScanResult } from './actions';
 import { connect } from 'react-redux';
+import { toggleSocialShare } from 'modules';
 
 const mapStateToProps = (state: ApplicationState) => ({
     isSharing: state.social.isSharing,
-    cameraType: state.qr.cameraType
+    cameraType: state.qr.cameraType,
+    result: state.qr.result
 });
 
 const mapDispatchToProps = (dispatch) => ({
     toggleSocialShare: () => dispatch(toggleSocialShare()),
     toggleQRCodeReader: () => dispatch(toggleQRCodeReader()),
-    toggleCameraType: () => dispatch(toggleCameraType())
+    toggleCameraType: () => dispatch(toggleCameraType()),
+    saveScanResult: (result: string) => dispatch(saveScanResult(result))
 });
 
 interface QRCodeReaderProps {
     isSharing: boolean;
     cameraType: string;
+    result: string;
     toggleSocialShare(): void;
     toggleQRCodeReader(): void;
     toggleCameraType(): void;
+    saveScanResult(result: string): void;
 }
 
 class QRCodeReader extends React.Component<QRCodeReaderProps, {}> {
     
-    result = ResultText.noResult;
-
+    componentDidMount(){
+        this.props.saveScanResult(ResultText.noResult);
+    }
+    
     handleScan = (data) => {
         if (data) {
-            this.result = data;
+            this.props.saveScanResult(data);
         }
     }
 
@@ -61,10 +68,10 @@ class QRCodeReader extends React.Component<QRCodeReaderProps, {}> {
                     facingMode={this.props.cameraType}
                     style={{ width: '100%', align: 'center' }}
                 />
-                <p>{this.result}</p>
+                <p>{this.props.result}</p>
                 <Button onClick={this.closeQRCodeReader}>Close QR Code Reader</Button>
                 <Button onClick={this.changeCamera}>Change camera</Button>
-                <Button disabled={this.result === ResultText.noResult} onClick={this.openSharingModal}>
+                <Button disabled={this.props.result === ResultText.noResult} onClick={this.openSharingModal}>
                     Redeem discount
             </Button>
             </div>
