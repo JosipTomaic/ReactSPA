@@ -1,3 +1,3 @@
 export enum CameraSettings {
-    delay = 300
+    Delay = 300
 }

@@ -1,3 +1,3 @@
 export enum DiscountListText{
-    allAvailable = "All available discounts"
+    AllAvailable = "All available discounts"
 }

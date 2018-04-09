@@ -11,11 +11,11 @@ export const toggleQRCodeReader = (): AppThunkAction<QRAction> => async (dispatc
 }
 
 export const toggleCameraType = (): AppThunkAction<QRAction> => async (dispatch, getState) => {
-    if(getState().qr.cameraType == CameraType.environment){
-        dispatch({ type: QRActionTypes.TOGGLE_CAMERA_TYPE, payload: CameraType.user });
+    if(getState().qr.cameraType == CameraType.Environment){
+        dispatch({ type: QRActionTypes.TOGGLE_CAMERA_TYPE, payload: CameraType.User });
     }
     else {
-        dispatch({ type: QRActionTypes.TOGGLE_CAMERA_TYPE, payload: CameraType.environment });
+        dispatch({ type: QRActionTypes.TOGGLE_CAMERA_TYPE, payload: CameraType.Environment });
     }
 }
 

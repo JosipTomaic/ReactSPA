@@ -1,3 +1,3 @@
 export enum ResultText {
-    noResult = "No result"
+    NoResult = "No result"
 }

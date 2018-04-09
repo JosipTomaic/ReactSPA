@@ -77,9 +77,9 @@ class DiscountItemDetails extends React.Component<DiscountItemDetailsProps, {}> 
                                 <img src={ image } />
                             </Panel.Body>
                             <ListGroup>
-                                <ListGroupItem>{`${ PriceState.then } : ${ regularPrice } HRK`}</ListGroupItem>
+                                <ListGroupItem>{`${ PriceState.Then } : ${ regularPrice } HRK`}</ListGroupItem>
                                 <ListGroupItem className="discountPrice">
-                                    {`${ PriceState.now } : ${ discountPrice } HRK`}
+                                    {`${ PriceState.Now } : ${ discountPrice } HRK`}
                                 </ListGroupItem>
                             </ListGroup>
                             <Panel.Body>

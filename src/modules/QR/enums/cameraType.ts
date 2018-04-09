@@ -1,4 +1,4 @@
 export enum CameraType {
-    user = "user",
-    environment = "environment"
+    User = "user",
+    Environment = "environment"
 }

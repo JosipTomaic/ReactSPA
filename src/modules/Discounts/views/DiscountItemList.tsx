@@ -43,7 +43,7 @@ class DiscountItemList extends React.Component<DiscountItemListProps, {}> {
         else{
             return (
                 <div>
-                    <h2>{DiscountListText.allAvailable}</h2>
+                    <h2>{DiscountListText.AllAvailable}</h2>
                     <ul>
                         {
                             this.props.discounts.map((item) =>

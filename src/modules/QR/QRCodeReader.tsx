@@ -33,7 +33,7 @@ interface QRCodeReaderProps {
 class QRCodeReader extends React.Component<QRCodeReaderProps, {}> {
     
     componentDidMount(){
-        this.props.saveScanResult(ResultText.noResult);
+        this.props.saveScanResult(ResultText.NoResult);
     }
     
     handleScan = (data) => {
@@ -62,7 +62,7 @@ class QRCodeReader extends React.Component<QRCodeReaderProps, {}> {
         return (
             <div>
                 <QrReader
-                    delay={CameraSettings.delay}
+                    delay={CameraSettings.Delay}
                     onError={this.handleError}
                     onScan={this.handleScan}
                     facingMode={this.props.cameraType}
@@ -71,7 +71,7 @@ class QRCodeReader extends React.Component<QRCodeReaderProps, {}> {
                 <p>{this.props.result}</p>
                 <Button onClick={this.closeQRCodeReader}>Close QR Code Reader</Button>
                 <Button onClick={this.changeCamera}>Change camera</Button>
-                <Button disabled={this.props.result === ResultText.noResult} onClick={this.openSharingModal}>
+                <Button disabled={this.props.result === ResultText.NoResult} onClick={this.openSharingModal}>
                     Redeem discount
             </Button>
             </div>
