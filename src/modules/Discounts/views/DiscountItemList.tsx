@@ -7,7 +7,7 @@ import { DiscountItem } from '../model';
 import { fetchDiscountItemsAction, setDiscountId } from '../actions';
 import { connect } from 'react-redux';
 import ReactLoading from 'react-loading';
-import { LoadingAnimationSettings } from 'enums';
+import { LoadingAnimationSettings, Currency } from 'enums';
 
 const mapStateToProps = (state: ApplicationState) => ({
     discounts: state.discount.discountItems,
@@ -56,8 +56,8 @@ class DiscountItemList extends React.Component<DiscountItemListProps, {}> {
                                             <h4>{item.name}</h4>
                                         </Link>
                                         <div className="inlinePrices">
-                                            <span className="regularPrice">{item.regularPrice} HRK</span>
-                                            <span className="discountPrice">{item.discountPrice} HRK</span>
+                                            <span className="regularPrice">{item.regularPrice} {Currency.Croatia}</span>
+                                            <span className="discountPrice">{item.discountPrice} {Currency.Croatia}</span>
                                         </div>
                                     </li>
                                 )

@@ -8,7 +8,7 @@ import { fetchDiscountItemByIdAction } from '../actions';
 import { connect } from 'react-redux';
 import { DiscountItem } from '../model';
 import { toggleQRCodeReader, RedeemedDiscount, QRCodeReaderWrapper, SocialSharingWrapper } from 'modules';
-import { LocalStorageKeys } from 'enums';
+import { LocalStorageKeys, Currency } from 'enums';
 import { getFromLocalStorage } from 'services';
 import { PageAlreadyRedeemed } from 'components/PageAlreadyRedeemed';
 import { Page404 } from 'components';
@@ -41,6 +41,10 @@ class DiscountItemDetails extends React.Component<DiscountItemDetailsProps, {}> 
 
     componentDidMount() {
         this.props.fetchDiscountById(parseInt(this.props.match.params.id, 10));
+    }
+
+    componentWillUnmount(){
+        this.props.toggleQRCodeReader();
     }
 
     openQRCodeReader = () => {
@@ -77,9 +81,9 @@ class DiscountItemDetails extends React.Component<DiscountItemDetailsProps, {}> 
                                 <img src={ image } />
                             </Panel.Body>
                             <ListGroup>
-                                <ListGroupItem>{`${ PriceState.Then } : ${ regularPrice } HRK`}</ListGroupItem>
+                                <ListGroupItem>{`${ PriceState.Then } : ${ regularPrice } ${Currency.Croatia}`}</ListGroupItem>
                                 <ListGroupItem className="discountPrice">
-                                    {`${ PriceState.Now } : ${ discountPrice } HRK`}
+                                    {`${ PriceState.Now } : ${ discountPrice } ${Currency.Croatia}`}
                                 </ListGroupItem>
                             </ListGroup>
                             <Panel.Body>

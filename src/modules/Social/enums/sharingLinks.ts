@@ -1,4 +1,4 @@
 export enum SharingLinks {
-    GithubLink = 'http://github.com',
-    GithubQuote = 'Github'
+    AppLink = 'http://www.google.com/',
+    RedeemText = 'I have just redeemed '
 }

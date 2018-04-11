@@ -6,10 +6,11 @@ import { ApplicationState } from 'store';
 import { toggleSocialShare } from 'modules';
 import { connect } from 'react-redux';
 import { getFromLocalStorage, saveToLocalStorage } from 'services';
-import { LocalStorageKeys } from 'enums';
+import { LocalStorageKeys, Currency } from 'enums';
 import { DiscountItem, RedeemedDiscount } from '../Discounts/model';
 import { saveRedeemedDiscount } from '../Discounts/actions';
 import { SharingLinks } from './enums';
+import { PriceState } from '../Discounts/enums';
 
 const mapStateToProps = (state: ApplicationState) => ({
     isSharing: state.social.isSharing,
@@ -29,6 +30,10 @@ interface SocialSharingProps {
 }
 
 class SocialSharing extends React.Component<SocialSharingProps, {}> {
+
+    componentWillUnmount(){
+        this.props.toggleSocialShare();
+    }
 
     redeemDiscount = () => {
         let discount: RedeemedDiscount = { ...this.props.discount, dateRedeemed: new Date() };
@@ -51,7 +56,13 @@ class SocialSharing extends React.Component<SocialSharingProps, {}> {
                         <Modal.Title>Social share</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <FacebookShareButton url={SharingLinks.GithubLink} quote={SharingLinks.GithubQuote}>
+                        <FacebookShareButton 
+                            url={this.props.discount.image} 
+                            quote={
+                                `${SharingLinks.RedeemText} - ${this.props.discount.name}
+                                ${PriceState.Then} - ${this.props.discount.regularPrice} ${Currency.Croatia}
+                                ${PriceState.Now} - ${this.props.discount.discountPrice} ${Currency.Croatia}`
+                            }>
                             <h3>Share:</h3>
                             <FacebookIcon size={32} round />
                         </FacebookShareButton>
